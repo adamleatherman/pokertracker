@@ -590,12 +590,6 @@ def exit_program():
 
 def main():
     show_welcome_screen()
-    if not os.path.exists("sessions.txt"):
-        with open("sessions.txt", "w"):
-            pass
-    if not os.path.exists("transactions.txt"):
-        with open("transactions.txt", "w"):
-            pass
     option = input("Please enter option number: ")
     while option != "1" and option != "2" and option != "3":
         print("\nInvalid option number. Please try again.\n")
