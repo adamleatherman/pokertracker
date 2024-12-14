@@ -7,7 +7,13 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-BANKROLL_FILE = "finances.json"
+# Check if running inside Docker
+if os.path.exists("/.dockerenv"):
+    # Running inside Docker, use the volume-mounted directory
+    BANKROLL_FILE = "/app/data/sessions.json"
+else:
+    # Running locally, use the current working directory
+    BANKROLL_FILE = "sessions.json"
 
 
 def create_file():

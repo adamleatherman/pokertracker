@@ -1,0 +1,57 @@
+version: '3.9'
+services:
+  users_service:
+    build:
+      context: .
+      dockerfile: users_service.Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - shared-data:/app/data
+
+  statistics_service:
+    build:
+      context: .
+      dockerfile: statistics_service.Dockerfile
+    ports:
+      - "8083:8083"
+    command: ["python", "statistics_service.py"]
+    volumes:
+      - shared-data:/app/data
+
+  bankroll_service:
+    build:
+      context: .
+      dockerfile: bankroll_service.Dockerfile
+    ports:
+      - "8082:8082"
+    command: ["python", "bankroll_service.py"]
+    volumes:
+      - shared-data:/app/data
+
+  sessions_service:
+    build:
+      context: .
+      dockerfile: sessions_service.Dockerfile
+    ports:
+      - "8081:8081"
+    command: ["python", "sessions_service.py"]
+    volumes:
+      - shared-data:/app/data
+
+  main:
+    build:
+      context: .
+      dockerfile: main.Dockerfile
+    depends_on:
+      - users_service
+      - statistics_service
+      - bankroll_service
+      - sessions_service
+    stdin_open: true
+    tty: true
+    volumes:
+      - shared-data:/app/data
+
+volumes:
+  shared-data:

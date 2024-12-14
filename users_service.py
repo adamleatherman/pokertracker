@@ -21,7 +21,13 @@ def register():
     if not username or not password:
         return jsonify({"error": "Username and password are required"}), 400
 
-    users_file = "users.json"
+        # Check if running inside Docker
+    if os.path.exists("/.dockerenv"):
+        # Running inside Docker, use the volume-mounted directory
+        users_file = "/app/data/sessions.json"
+    else:
+        # Running locally, use the current working directory
+        users_file = "sessions.json"
 
     if not os.path.exists(users_file):
         with open(users_file, "w") as f:

@@ -6,7 +6,14 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-FILE_PATH = "sessions.json"
+
+# Check if running inside Docker
+if os.path.exists("/.dockerenv"):
+    # Running inside Docker, use the volume-mounted directory
+    FILE_PATH = "/app/data/sessions.json"
+else:
+    # Running locally, use the current working directory
+    FILE_PATH = "sessions.json"
 
 
 @app.route("/add-session", methods=["POST"])
