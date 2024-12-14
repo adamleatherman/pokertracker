@@ -17,10 +17,10 @@ PokerTracker is a command-line application for managing your poker sessions, ban
    git clone https://github.com/adamleatherman/pokertracker
    cd PokerTracker
    ```
-2. Build and run the Docker container:
+2. Build and run the Docker containers:
    ```bash
-   docker build -t pokertracker .
-   docker run -p 8080:8080 -p 8081:8081 -p 8082:8082 -p 8083:8083 pokertracker
+   docker-compose up -d
+   docker exec -it pokertracker-main-1 /bin/bash
    ```
 
 ### Manual Installation
