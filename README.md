@@ -11,23 +11,36 @@ PokerTracker is a command-line application for managing your poker sessions, ban
 
 ## Installation
 
+### Using Docker (Recommended)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/adamleatherman/pokertracker
+   cd PokerTracker
+   ```
+2. Build and run the Docker container:
+   ```bash
+   docker build -t pokertracker .
+   docker run -p 8080:8080 -p 8081:8081 -p 8082:8082 -p 8083:8083 pokertracker
+   ```
+
+### Manual Installation
 1. Clone the repository:
    ```bash
    git clone https://github.com/adamleatherman/pokertracker
    cd PokerTracker
    ```
 2. Install the dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 3. Start all services:
-    ```bash
-    python users_service.py
-    python statistics_service.py
-    python bankroll_service.py
-    python sessions_service.py
-    ```
-4. Start main program:
-    ```bash
-    python main.py
-    ```
+   ```bash
+   python users_service.py
+   python statistics_service.py
+   python bankroll_service.py
+   python sessions_service.py
+   ```
+4. Start the main program:
+   ```bash
+   python main.py
+   ```
