@@ -20,8 +20,7 @@ PokerTracker is a command-line application for managing your poker sessions, ban
 2. Build and run the Docker containers:
    ```bash
    docker-compose up -d
-   docker exec -it pokertracker-main-1 /bin/bash
-   python main.py
+   docker exec -it pokertracker-main-1 python main.py
    ```
 
 ### Manual Installation
