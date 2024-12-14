@@ -24,10 +24,10 @@ def register():
         # Check if running inside Docker
     if os.path.exists("/.dockerenv"):
         # Running inside Docker, use the volume-mounted directory
-        users_file = "/app/data/sessions.json"
+        users_file = "/app/data/users.json"
     else:
         # Running locally, use the current working directory
-        users_file = "sessions.json"
+        users_file = "users.json"
 
     if not os.path.exists(users_file):
         with open(users_file, "w") as f:
@@ -57,7 +57,12 @@ def login():
     if not username or not password:
         return jsonify({"error": "Username and password are required"}), 400
 
-    users_file = "users.json"
+    if os.path.exists("/.dockerenv"):
+        # Running inside Docker, use the volume-mounted directory
+        users_file = "/app/data/users.json"
+    else:
+        # Running locally, use the current working directory
+        users_file = "users.json"
 
     if not os.path.exists(users_file):
         return (
@@ -78,4 +83,4 @@ def login():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8080)
+    app.run(debug=False, host="0.0.0.0", port=8080)

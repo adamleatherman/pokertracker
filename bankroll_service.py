@@ -10,10 +10,10 @@ app = Flask(__name__)
 # Check if running inside Docker
 if os.path.exists("/.dockerenv"):
     # Running inside Docker, use the volume-mounted directory
-    BANKROLL_FILE = "/app/data/sessions.json"
+    BANKROLL_FILE = "/app/data/finances.json"
 else:
     # Running locally, use the current working directory
-    BANKROLL_FILE = "sessions.json"
+    BANKROLL_FILE = "finances.json"
 
 
 def create_file():
@@ -140,4 +140,4 @@ def delete_finances():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8082)
+    app.run(debug=False, host="0.0.0.0", port=8082)

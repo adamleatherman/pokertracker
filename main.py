@@ -1,13 +1,30 @@
 import getpass
 import json
+import os
 import requests
 import sys
 from datetime import datetime
 
-USERS_URL = "http://127.0.0.1:8080"
-SESSIONS_URL = "http://127.0.0.1:8081"
-BANKROLL_URL = "http://127.0.0.1:8082"
-STATISTICS_URL = "http://127.0.0.1:8083"
+USERS_URL = (
+    "http://users_service:8080"
+    if os.path.exists("/.dockerenv")
+    else "http://127.0.0.1:8080"
+)
+SESSIONS_URL = (
+    "http://sessions_service:8081"
+    if os.path.exists("/.dockerenv")
+    else "http://127.0.0.1:8081"
+)
+BANKROLL_URL = (
+    "http://bankroll_service:8082"
+    if os.path.exists("/.dockerenv")
+    else "http://127.0.0.1:8082"
+)
+STATISTICS_URL = (
+    "http://statistics_service:8083"
+    if os.path.exists("/.dockerenv")
+    else "http://127.0.0.1:8083"
+)
 
 
 class User:
