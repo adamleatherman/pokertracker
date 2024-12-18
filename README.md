@@ -1,6 +1,6 @@
 # PokerTracker
 
-PokerTracker is a command-line application for managing your poker sessions, bankroll, and analyzing your performance. It helps players track session data, manage finances, and view key statistics over time.
+PokerTracker is a command-line application for managing your poker sessions, bankroll, and analyzing your performance. It helps players track session data, manage finances, and view key statistics over time. Intended to simulate microservices architecture for educational purposes. 
 
 ## Features
 
